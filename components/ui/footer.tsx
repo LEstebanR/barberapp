@@ -2,8 +2,8 @@ import { Github, Heart } from "lucide-react";
 import Link from "next/link";
 export function Footer() {
   return (
-    <footer className="my-8 w-full">
-      <div className="z-10 flex flex-wrap items-center justify-center gap-x-1 gap-y-3 sm:gap-x-2">
+    <footer className="flex items-center justify-center w-full h-16">
+      <div className="flex flex-wrap items-center justify-center ">
         <Link
           href="https://github.com/LEstebanR/barbeerapp"
           aria-label="Github project"
