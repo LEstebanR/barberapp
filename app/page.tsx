@@ -88,7 +88,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="flex justify-end items-center w-full">
+          <div className="flex md:justify-end items-center">
             <WaitlistForm />
           </div>
         </div>
