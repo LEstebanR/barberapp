@@ -60,8 +60,8 @@ export default function Home() {
   return (
     <main className="flex flex-col mt-16 items-center w-full ">
       <section className="w-full py-16  bg-[url('/bg-barber.png')]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4  text-white mx-auto justify-end md:w-8/12 px-4 md:px-0 ">
-          <div className="flex flex-col justify-center gap-4 max-w-xl">
+        <div className="text-white  gap-8 flex md:flex-row md:justify-between md:w-8/12 mx-auto flex-col px-4 md:px-0 justify-center">
+          <div className="flex flex-col justify-center gap-4 md:max-w-xl">
             <Badge className="bg-amber-500/20 text-primary border-primary flex items-center gap-2 rounded-full px-4 py-2">
               <Clock className="w-8 h-8 text-primary" />
               <p className="text-primary text-sm">Acceso anticipado</p>
@@ -88,7 +88,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="flex md:justify-end items-center">
+          <div className="flex items-center">
             <WaitlistForm />
           </div>
         </div>
