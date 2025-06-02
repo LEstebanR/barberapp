@@ -1,7 +1,6 @@
 name: TypeCheck
 
 on:
-  push:
   pull_request:
     types: [opened, edited, reopened, synchronize]
 
