@@ -58,10 +58,19 @@ const BENEFITS = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col mt-16 items-center w-full ">
-      <section className="w-full py-16  bg-[url('/bg-barber.png')]">
+    <main className="flex flex-col items-center w-full ">
+      <section className="w-full py-8  bg-[url('/bg-barber.png')]">
         <div className="text-white  gap-8 flex md:flex-row md:justify-between md:w-8/12 mx-auto flex-col px-4 md:px-0 justify-center">
           <div className="flex flex-col justify-center gap-4 md:max-w-xl">
+            <h1 className="text-6xl font-bold tracking-tighter text-primary">
+              BarberApp
+            </h1>
+            <p>
+              Sé de los primeros en acceder a la plataforma que transformará la
+              gestión de tu barbería. Administra turnos, crea un perfil en línea
+              para compartir y mucho más. Regístrate ahora y obtén beneficios
+              exclusivos.
+            </p>
             <Badge className="bg-amber-500/20 text-primary border-primary flex items-center gap-2 rounded-full px-4 py-2">
               <Clock className="w-8 h-8 text-primary" />
               <p className="text-primary text-sm">Acceso anticipado</p>
@@ -69,11 +78,7 @@ export default function Home() {
             <h2 className="text-6xl font-bold tracking-tighter">
               Únete a la lista de espera
             </h2>
-            <p>
-              Sé de los primeros en acceder a la plataforma que transformará la
-              gestión de tu barbería. Regístrate ahora y obtén beneficios
-              exclusivos.
-            </p>
+
             <div className="flex gap-4">
               <ul className="flex flex-col gap-8">
                 {BENEFITS.map((benefit) => (

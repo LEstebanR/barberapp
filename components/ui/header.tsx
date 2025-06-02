@@ -1,4 +1,5 @@
 import { Logo } from "@/components/ui/logo";
+import Link from "next/link";
 
 export function Header() {
   return (
@@ -6,7 +7,12 @@ export function Header() {
       <div className="flex items-center justify-between md:w-8/12 w-full px-4 md:px-0">
         <Logo />
         <div className="flex items-center gap-x-4">
-          <p>Links</p>
+          <Link
+            href="#waitlist"
+            className="text-sm  hover:text-primary transition-colors hover:underline underline-offset-4"
+          >
+            Únete a la lista de espera
+          </Link>
         </div>
       </div>
     </header>
