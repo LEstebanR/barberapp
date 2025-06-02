@@ -74,7 +74,7 @@ export function WaitlistForm() {
   };
 
   return (
-    <Card className="border border-amber-500/30 bg-zinc-950 shadow-xl w-[400px]">
+    <Card className="border border-amber-500/30 bg-zinc-950 shadow-xl md:w-[400px]">
       <CardHeader>
         <CardTitle className="text-white">
           Regístrate en la lista de espera
