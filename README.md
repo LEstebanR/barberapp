@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💈 BarberApp – Gestión moderna de barberías
 
-## Getting Started
+> Plataforma para crear perfiles públicos de barberías y administrar su presencia online.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Stack Tecnológico
+
+Este proyecto utiliza una arquitectura moderna basada en tecnologías de frontend y backend unificadas en un entorno fullstack con JavaScript/TypeScript:
+
+- **[Next.js](https://nextjs.org/)** – Framework React para SSR y API Routes
+- **[Tailwind CSS](https://tailwindcss.com/)** – Utilidades CSS modernas
+- **[shadcn/ui](https://ui.shadcn.com/)** – Componentes accesibles y bien diseñados
+- **[Prisma](https://www.prisma.io/)** – ORM para base de datos relacional
+- **[Bun](https://bun.sh/)** – Runtime y gestor de paquetes ultrarrápido
+
+---
+
+## ⚙️ Estructura del Repositorio
+
+```
+/
+├── app/                # Rutas y vistas de Next.js (App Router)
+├── components/         # Componentes UI reutilizables (ShadcnUI, personalizados)
+├── lib/                # Utilidades (helpers, API clients, etc.)
+├── prisma/             # Esquema y migraciones de base de datos
+├── public/             # Archivos estáticos
+├── styles/             # Estilos globales si aplica
+├── .github/            # Plantillas de issues, acciones, workflows
+├── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧬 GitFlow y Convenciones
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Este proyecto sigue un flujo de desarrollo basado en ramas, enfocado en mantener un `develop` limpio y un `main` estable.
 
-## Learn More
+### 📌 Ramas principales
 
-To learn more about Next.js, take a look at the following resources:
+- `main`: rama estable, solo recibe merges desde `develop` cuando se lanza una versión.
+- `develop`: rama de integración continua, recibe todos los PRs funcionales.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🌱 Ramas secundarias
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Todas las ramas se crean desde `develop`, excepto `hotfix/*`.
 
-## Deploy on Vercel
+| Tipo de rama  | Prefijo    | Ejemplo                           |
+| ------------- | ---------- | --------------------------------- |
+| Feature       | `feature/` | `feature/perfil-publico-barberia` |
+| Bug fix       | `bugfix/`  | `bugfix/error-login-ios`          |
+| Hotfix        | `hotfix/`  | `hotfix/fix-404-en-produccion`    |
+| Documentación | `docs/`    | `docs/estructura-api`             |
+| Configuración | `config/`  | `config/github-actions-ci`        |
+| Releases      | `release/` | `release/v1.0.0`                  |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> Usa nombres en `kebab-case`, claros y descriptivos.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🧪 Pull Requests
+
+- Crea un PR desde tu rama secundaria hacia `develop`.
+- Usa el template de PR incluido.
+- Menciona el issue correspondiente con `Closes #12` para cierre automático.
+- Las ramas se eliminan automáticamente después del merge (excepto `develop` y `main`).
+
+### 🛡️ Ramas protegidas
+
+- `main` y `develop` son ramas protegidas.
+- Solo se puede hacer merge vía PR y tras pasar las validaciones de CI.
+
+---
+
+## ⚙️ Scripts útiles con Bun
+
+| Script                    | Descripción                                  |
+| ------------------------- | -------------------------------------------- |
+| `bun dev`                 | Inicia el entorno de desarrollo              |
+| `bunx prisma migrate dev` | Aplica migraciones locales                   |
+| `bunx prisma studio`      | Abre Prisma Studio para ver la base de datos |
+| `bunx prettier --write .` | Formatea el código con Prettier              |
+| `bunx eslint .`           | Lint del código                              |
+
+---
+
+## 🧹 Checklist al contribuir
+
+- [ ] Seguir convención de nombre de rama (`feature/`, `bugfix/`, etc.)
+- [ ] Incluir issue relacionado en el PR
+- [ ] Usar el template de Pull Request
+- [ ] Pasar el CI (lint, build, tests si aplica)
+- [ ] No subir archivos `.env`, `.env.local` u otras credenciales
+- [ ] Usar componentes de `shadcn/ui` cuando sea posible
+
+---
+
+## 📎 Recursos
+
+- [Next.js Docs](https://nextjs.org/docs)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [shadcn/ui Docs](https://ui.shadcn.com/docs)
+- [Prisma Docs](https://www.prisma.io/docs)
+- [Bun Docs](https://bun.sh/docs)
+
+---
+
+## 🧠 Futuro
+
+Este README crecerá con instrucciones de despliegue, entorno productivo, documentación de la API y casos de uso más avanzados a medida que evolucione el producto.
