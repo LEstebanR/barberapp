@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,17 +22,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
 
 export function WaitlistForm() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    setError(null);
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -58,43 +56,25 @@ export function WaitlistForm() {
         throw new Error(error.error || "Error al enviar el formulario");
       }
 
-      setIsSubmitted(true);
+      toast.success("¡Gracias por registrarte!", {
+        description:
+          "Te hemos añadido a nuestra lista de espera. Te notificaremos por email cuando la plataforma esté lista.",
+      });
+
+      // Reset form using the ref
+      formRef.current?.reset();
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Error al enviar el formulario"
-      );
+      toast.error("Error al enviar el formulario", {
+        description:
+          err instanceof Error ? err.message : "Por favor, intenta nuevamente",
+      });
     } finally {
       setIsLoading(false);
     }
   };
 
-  if (isSubmitted) {
-    return (
-      <Card className="border border-amber-500/30 bg-zinc-950 shadow-xl">
-        <CardContent className="pt-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center py-8">
-            <div className="rounded-full bg-amber-500/20 p-3">
-              <CheckCircle2 className="h-8 w-8 text-amber-500" />
-            </div>
-            <CardTitle className="text-xl">¡Gracias por registrarte!</CardTitle>
-            <CardDescription className="text-zinc-300">
-              Te hemos añadido a nuestra lista de espera. Te notificaremos por
-              email cuando la plataforma esté lista.
-            </CardDescription>
-            <div className="mt-4 text-sm text-zinc-300">
-              <p>
-                Mientras tanto, síguenos en nuestras redes sociales para estar
-                al día de nuestras novedades.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
-
   return (
-    <Card className="border border-amber-500/30 bg-zinc-950 shadow-xl">
+    <Card className="border border-amber-500/30 bg-zinc-950 shadow-xl w-[400px]">
       <CardHeader>
         <CardTitle className="text-white">
           Regístrate en la lista de espera
@@ -103,16 +83,11 @@ export function WaitlistForm() {
           Completa el formulario para ser de los primeros en acceder a BarberApp
         </CardDescription>
       </CardHeader>
-      <form onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
-          {error && (
-            <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-md text-red-500 text-sm">
-              {error}
-            </div>
-          )}
           <div className="space-y-2">
             <Label htmlFor="shop-name" className="text-white">
-              Nombre de la barbería
+              Nombre de la barbería *
             </Label>
             <Input
               id="shop-name"
@@ -124,7 +99,7 @@ export function WaitlistForm() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="name" className="text-white">
-              Nombre completo
+              Nombre completo *
             </Label>
             <Input
               id="name"
@@ -136,7 +111,7 @@ export function WaitlistForm() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="email" className="text-white">
-              Email de contacto
+              Email de contacto *
             </Label>
             <Input
               id="email"
@@ -149,18 +124,19 @@ export function WaitlistForm() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone" className="text-white">
-              Teléfono (opcional)
+              Teléfono *
             </Label>
             <Input
               id="phone"
               name="phone"
               placeholder="+34 123 456 789"
+              required
               className="bg-zinc-800 border-zinc-700 focus:border-amber-500/50 focus:ring-amber-500/20 text-white placeholder:text-zinc-400"
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="size" className="text-white">
-              Tamaño de la barbería
+              Tamaño de la barbería *
             </Label>
             <Select name="size" required>
               <SelectTrigger
