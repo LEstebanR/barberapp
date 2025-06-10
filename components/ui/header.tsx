@@ -7,7 +7,6 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Logo } from '@/components/ui/logo'
 import { MenuIcon } from 'lucide-react'
-import Link from 'next/link'
 
 export function Header() {
   return (
