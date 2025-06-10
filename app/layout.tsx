@@ -30,8 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased grid min-h-dvh grid-rows-[auto_1fr_auto] w-full`}
       >
-        <Header />
-        <div className="mt-14 flex flex-col gap-2 w-full items-center">
+        <div className="flex flex-col gap-2 w-full items-center">
           {children}
         </div>
         <Footer />

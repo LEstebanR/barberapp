@@ -6,7 +6,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Logo } from '@/components/ui/logo'
-import { MenuIcon } from 'lucide-react'
+import { LogIn, MenuIcon, User } from 'lucide-react'
+import Link from 'next/link'
 
 export function Header() {
   return (
@@ -14,8 +15,12 @@ export function Header() {
       <div className="flex items-center justify-between md:w-8/12 w-full px-4 md:px-0">
         <Logo />
         <div className="hidden md:flex gap-2">
-          <Button variant="outline">Iniciar sesión</Button>
-          <Button>Registrarse</Button>
+          <Link href="/login">
+            <Button variant="outline">Iniciar sesión</Button>
+          </Link>
+          <Link href="/signup">
+            <Button>Registrarse</Button>
+          </Link>
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -23,9 +28,20 @@ export function Header() {
               <MenuIcon />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>Iniciar sesión</DropdownMenuItem>
-            <DropdownMenuItem>Registrarse</DropdownMenuItem>
+          <DropdownMenuContent className="w-screen">
+            <Link href="/login" className="flex gap-2 items-center">
+              <DropdownMenuItem>
+                {' '}
+                <User />
+                <p className="text-xl">Iniciar sesión</p>
+              </DropdownMenuItem>
+            </Link>
+            <Link href="/signup" className="flex gap-2 items-center">
+              <DropdownMenuItem>
+                <LogIn />
+                <p className="text-xl">Registrarse</p>
+              </DropdownMenuItem>
+            </Link>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

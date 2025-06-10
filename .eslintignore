@@ -8,3 +8,5 @@ public
 *.config.mjs
 *.config.ts
 *.config.mts
+prisma/generated
+lib/generated
