@@ -124,6 +124,9 @@ export default function Home() {
               icon={<User className="h-6 w-6" />}
             />
           </div>
+          <Badge className="py-2 px-4 text-lg bg-black text-white rounded-2xl">
+            Y muchas características más para impulsar tu negocio
+          </Badge>
         </div>
       </section>
     </main>

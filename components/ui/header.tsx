@@ -28,7 +28,7 @@ export function Header() {
               <MenuIcon />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-screen">
+          <DropdownMenuContent className="w-screen rounded-t-none">
             <Link href="/login" className="flex gap-2 items-center">
               <DropdownMenuItem>
                 {' '}
