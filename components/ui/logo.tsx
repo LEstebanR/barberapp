@@ -1,15 +1,15 @@
-import Link from "next/link";
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
 
 export function Logo() {
   return (
-    <Link href="/" className="cursor-pointer">
+    <Link href="/" className="cursor-pointer p-1">
       <Image
-        src="https://res.cloudinary.com/lesteban/image/upload/v1748831925/barberapp/logo.png"
+        src="https://res.cloudinary.com/lesteban/image/upload/v1749511059/barberapp/logo-barberapp_qztsoj.png"
         alt="Logo"
-        width={50}
-        height={50}
+        width={30}
+        height={30}
       />
     </Link>
-  );
+  )
 }

@@ -1,5 +1,6 @@
-import { Github, Heart } from "lucide-react";
-import Link from "next/link";
+import { Github, Heart } from 'lucide-react'
+import Link from 'next/link'
+
 export function Footer() {
   return (
     <footer className="flex items-center justify-center w-full h-16">
@@ -26,5 +27,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
