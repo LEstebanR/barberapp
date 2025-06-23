@@ -109,7 +109,7 @@ const PricingCard = ({
   pricing: { name: string; description: string; price: string }
 }) => {
   return (
-    <Card className="border border-primary rounded-lg p-4 text-center h-full flex flex-col">
+    <Card className="border border-primary rounded-lg p-4 text-center h-full flex flex-col hover:bg-yellow-100">
       <CardTitle className="text-3xl mb-4">{pricing.name}</CardTitle>
       <CardContent className="flex-1 flex flex-col justify-center">
         <p className="text-xl text-muted-foreground mb-2">
@@ -119,7 +119,7 @@ const PricingCard = ({
       </CardContent>
       <CardFooter className="mt-auto">
         {pricing.price == 'Gratis' ? (
-          <Button>Comenzar gratis</Button>
+          <Button className="w-full">Comenzar gratis</Button>
         ) : (
           <Button className="w-full">Empezar prueba</Button>
         )}
@@ -155,8 +155,8 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center w-full mt-14 ">
       <Header />
-      <section className="bg-[url('https://res.cloudinary.com/lesteban/image/upload/e_brightness:-50/v1749532640/barberapp/bg-barber_fwkjib.png')] w-full flex flex-col items-center justify-center text-white px-4 md:px-0 h-[calc(100vh-3.5rem)]">
-        <div className="md:w-8/12 md:my-24 my-8 flex flex-col gap-8">
+      <section className="bg-[url('https://res.cloudinary.com/lesteban/image/upload/e_brightness:-50/v1749532640/barberapp/bg-barber_fwkjib.png')] w-full flex flex-col items-center justify-center text-white px-4 md:px-0 md:h-[calc(100vh-3.5rem)]">
+        <div className="md:w-8/12 md:my-24 flex flex-col gap-8 my-14">
           <Badge className="py-1 text-sm border border-amber-500/30 bg-amber-500/10 text-primary px-4 ">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500 mr-2 animate-ping"></span>
             Plataforma #1 para la gestión de barberías
@@ -175,7 +175,7 @@ export default function Home() {
               Soy cliente
             </Button>
           </div>
-          <div className="flex justify-between gap-4 pt-4 mt-14">
+          <div className="flex justify-between gap-4 pt-4">
             <div className="flex flex-col items-center sm:items-start">
               <div className="flex items-center text-amber-500 mb-1">
                 <Calendar className="h-4 w-4 mr-1" />
