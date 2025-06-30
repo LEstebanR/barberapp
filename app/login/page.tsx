@@ -3,7 +3,10 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Logo } from '@/components/ui/logo'
+import Form from 'next/form'
 import Link from 'next/link'
+
+import { Login } from './action'
 
 export default function LoginPage() {
   return (
@@ -16,17 +19,17 @@ export default function LoginPage() {
       <Card className="p-4 w-full mt-4 py-8">
         <CardTitle>Iniciar sesión</CardTitle>
         <CardContent>
-          <form className="flex flex-col gap-4">
+          <Form className="flex flex-col gap-4" action={Login}>
             <div className="flex flex-col gap-1">
               <Label>Correo</Label>
-              <Input placeholder="nombre@mail.com" type="email" />
+              <Input placeholder="nombre@mail.com" type="email" name="email" />
             </div>
             <div className="flex flex-col gap-1">
               <Label>Contraseña</Label>
-              <Input placeholder="*******" type="password" />
+              <Input placeholder="*******" type="password" name="password" />
             </div>
             <Button type="submit">Iniciar sesión</Button>
-          </form>
+          </Form>
         </CardContent>
       </Card>
       <p className="mt-4">
