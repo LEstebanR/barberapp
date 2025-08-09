@@ -10,8 +10,8 @@ export async function Login(formData: FormData) {
   const password = formData.get('password')
 
   const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
+    email: email as string,
+    password: password as string,
   })
 
   if (error) {
