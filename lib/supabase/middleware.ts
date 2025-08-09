@@ -39,14 +39,23 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/') &&
-    !request.nextUrl.pathname.startsWith('/auth')
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl.clone()
-    url.pathname = '/'
+  const url = request.nextUrl.clone()
+
+  // Si el usuario está autenticado y está en la página raíz, redirigir a dashboard
+  if (user && request.nextUrl.pathname === '/') {
+    url.pathname = '/dashboard'
+    return NextResponse.redirect(url)
+  }
+
+  // Si el usuario NO está autenticado y está intentando acceder a rutas protegidas
+  if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
+    url.pathname = '/login'
+    return NextResponse.redirect(url)
+  }
+
+  // Si el usuario está autenticado y está en login o signup, redirigir a dashboard
+  if (user && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup')) {
+    url.pathname = '/dashboard'
     return NextResponse.redirect(url)
   }
 
